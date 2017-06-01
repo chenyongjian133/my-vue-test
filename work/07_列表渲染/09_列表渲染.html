@@ -16,12 +16,43 @@
 <div id="demo">
 
   <h2>测试: v-for 遍历数组</h2>
-
+    <ul>
+      <li v-for="p in persons | filterBy 'o' in 'name'" track-by="id">
+      {{$index}}---{{p.name}}---{{p.age}}--
+      <button @click="deleteItem(p)">删除</button>--
+      <button @click="updateItem(p,{name:'Jok',age:15})">更新</button>
+      </li>
+    </ul>
   <h2>测试: v-for 遍历对象</h2>
+  <ul>
+    <li v-for="value in persons[0]">
+      {{$key}}:{{value}}
+    </li>
+  </ul>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  new Vue({
+      el:"#demo",
+      data:{
+          persons:[
+              {id: 1, name: 'Tom', age: 12},
+              {id: 2, name: 'Jack', age: 13},
+              {id: 3, name: 'Bob', age: 14}
+          ]
+      },
+      methods:{
+          deleteItem(p){
+              this.persons.$remove(p)
+          },
+          updateItem(p,newP){
+              var index=this.persons.indexOf(p);
+              console.log(index);
+              this.persons.$set(index,newP);
+          }
+      }
+  })
 </script>
 </body>
 </html>
