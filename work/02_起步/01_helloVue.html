@@ -5,7 +5,10 @@
   <title>01_helloVue</title>
 </head>
 <body>
-
+<div id="app">
+  <input type="text" v-model="username">
+  <p>hello,{{username}}</p>
+</div>
 <!--
   1. 引入Vue.js
   2. 创建Vue对象
@@ -19,4 +22,15 @@
 -->
 
 </body>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" >
+    const data={username:'Tom'}  //这是Model
+    //Vue的实例对象是viewModel，它连接View与Model
+    const vm=new Vue({
+        el:'#app',
+        data(){
+            return data
+        }
+    })
+</script>
 </html>
