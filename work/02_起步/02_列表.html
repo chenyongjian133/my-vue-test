@@ -25,6 +25,41 @@
             {id : 3, name : '打豆豆'}
           ]
 -->
-
+<ul id="todos" v-cloak="">
+  <!--<li v-for="item in todoList" v-text="item.id+'&#45;&#45;'+item.name"></li>-->
+  <li v-for="item in todoList">{{item.id+'--'+item.name}}</li>
+</ul>
 </body>
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" >
+    var vm=new Vue({
+        el:'#todos',
+//        data(){
+//            return{
+//                todoList:[
+//                    {id: 1, name: '吃饭'},
+//                    {id: 2, name: '睡觉'},
+//                    {id: 3, name: '打豆豆'}
+//                ]
+//            }
+//        }
+        data:function(){
+            return{
+                todoList: [
+                    {id: 1, name: '吃饭'},
+                    {id: 2, name: '睡觉'},
+                    {id: 3, name: '打豆豆'}
+                ]
+            }
+        }
+//        data:{
+//            todoList: [
+//                {id: 1, name: '吃饭'},
+//                {id: 2, name: '睡觉'},
+//                {id: 3, name: '打豆豆'}
+//            ]
+//        }
+    })
+  console.log(vm);
+</script>
 </html>
