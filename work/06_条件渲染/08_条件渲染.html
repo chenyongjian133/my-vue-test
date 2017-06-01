@@ -18,15 +18,27 @@
 
 <div id="demo">
   <h1>测试: 切换一个元素</h1>
-
+  <h2 v-if="ok">成功啦</h2>
+  <h2 v-else="">失败了</h2>
+  <h2 v-show="ok">成功显示</h2>
 
   <h1>测试: 切换多个元素</h1>
-
-
+  <template v-if="ok">
+    <h1>Title</h1>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+  </template>
+<button @click="ok=!ok">toggle</button>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  var vm=new Vue({
+      el:'#demo',
+      data:{
+          ok:true
+      }
+  })
 </script>
 </body>
 </html>
