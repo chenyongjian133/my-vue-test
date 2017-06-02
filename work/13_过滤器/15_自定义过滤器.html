@@ -25,11 +25,33 @@
 
 <div id="example">
   <!--过滤器reverse: 对指定值进行倒序显示-->
+  {{msg | reverse}}<br>
   <!--过滤器wrap: 在指定值的左侧和右侧添加指定的文本-->
+  {{msg | wrap '不管你信不信 ' '反正我不信'}}
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  Vue.filter('reverse',function (val) {
+      return val.split('').reverse().join('')
+  })
+  new Vue({
+      el:'#example',
+      data:{
+        msg:'我喜欢你'
+      },
+      methods:{
+
+      },
+      computed:{
+
+      },
+      filters:{
+          wrap:function (value ,left,right) {
+              return left+' '+value+" "+right
+          }
+      }
+  });
 </script>
 </body>
 </html>

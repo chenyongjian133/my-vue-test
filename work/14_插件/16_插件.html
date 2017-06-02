@@ -6,11 +6,31 @@
 </head>
 <body>
 <div id="demo">
+  <!--使用自定义指令-->
+  <p v-my-directive="msg"></p>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript" src="./myPlugin.js"></script>
 <script type="text/javascript">
+    //使用自定义插件
+  Vue.use(MyPlugin);
+  var vue=new Vue({
+      el:'#demo',
+      data:{
+        msg:'atguigu.com'
+      },
+      methods:{
 
+      },
+      computed:{
+
+      },
+  });
+    //调用自定义的静态方法
+    Vue.myGlobalMethod();
+    //调用自定义的静态方法
+  vue.$myMethod();
 </script>
 </body>
 </html>

@@ -26,12 +26,37 @@
       @keyup.enter='xxx'
 -->
 <div id="app">
-
-
+  <h2>1. 表达式 : {{}} 或 {{{}}}</h2>   <!-- 1. 表达式 : }-->
+  <p>{{msg}}</p>        <!-- <a href="http://www.atguigu.com">尚硅谷</a>-->
+  <p>{{{msg}}}</p>     <!-- 尚硅谷-带超链接功能-->
+  <p>{{msg.toUpperCase()}}</p>  <!--<A HREF="HTTP://WWW.ATGUIGU.COM">尚硅谷</A>-->
+  <p>{{123123.123123 | currency '$'}}</p>   <!--$123,123.12-->
+  <h2>2. 强制数据绑定:</h2>
+  <a href="{{url}}">百度一下</a><br>
+  <a v-bind:href="url">百度一下2</a><br>
+  <a :href="url">百度一下3</a> <br>
+  <h2>3. 事件监听:</h2>
+  <input type="text" v-model="username" v-on:keyup.enter="showValue">
+  <input type="text" v-model="username2" @keyup.enter="showValue2('myvalue')">
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  new Vue({
+      el:'#app',
+      data:{
+          msg:'<a href="http://www.atguigu.com">尚硅谷</a>',
+          url:'http://www.baidu.com'
+      },
+      methods:{
+          showValue(){
+              alert(this.username)
+          },
+          showValue2(arg){
+              alert(this.username2+'---'+arg)
+          }
+      }
+  })
 </script>
 </body>
 </html>

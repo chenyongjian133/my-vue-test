@@ -5,8 +5,7 @@
   <title>13_生命周期</title>
 </head>
 <body>
-<div>
-</div>
+
 <!--
 vue对象的生命周期
 1. 初始化显示
@@ -19,8 +18,56 @@ vue对象的生命周期
   * beforeDestory(): 在此做一些收尾的工作: 如清理定时器
   * destoryed()
 -->
+<div>
+  <button @click="destoryVue">destory vue</button>
+  <p v-show="isShowing">{{msg}}</p>
+</div>
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  var vue=new Vue({
+      el:'div',
+      data:{
+        msg:'atguigu',
+          isShowing:true,
+          persons:[]
+      },
+      methods:{
+        destoryVue(){
+            vue.$destroy()
+        }
+      },
+      computed:{
+
+      },
+      created:function(){
+          console.log('create'+this.msg);
+          this.intervalId=setInterval(()=>{
+              console.log('----------');
+              this.isShowing=!this.isShowing
+          },1000);
+          //发送ajax请求, 得到 persons
+          var persons=[{name:'Tom'},{name:'jack'}];
+          this.persons=persons
+      },
+      beforeCompile () {
+          console.log('beforeCompile() msg='+this.msg);
+      },
+      compiled () {
+          console.log('compiled() msg='+this.msg);
+      },
+      ready () {
+          console.log('ready() msg='+this.msg);
+      },
+
+      beforeDestroy () {
+          console.log('beforeDestroy() msg='+this.msg);
+          clearInterval(this.intervalId);
+      },
+
+      destroyed () {
+          console.log('destroyed() msg='+this.msg);
+      },
+  });
 </script>
 </body>
 </html>
